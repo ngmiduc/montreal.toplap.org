@@ -1,0 +1,51 @@
+@import '../variables';
+
+.item{
+  border: 0.1vmin dashed transparent;
+  border-radius: 1vmin;
+  overflow: hidden;
+  background-color: black;
+  color: white;
+
+  @media #{$iphone}{
+    border: 0.5vmin dashed silver;
+  }
+
+  p{
+    padding: 0.2vmin 0.5vmin;
+    margin: 0;
+    font-size: 1.5vmin;
+
+    word-break: break-all;
+
+    @media #{$iphone}{
+      font-size: 3.5vmin;
+    }
+
+    a{
+      text-decoration: none;
+      color: inherit;
+    }
+    a:hover{
+      color:gold;
+    }
+
+    .tags{
+        color: gold;
+        margin: 0.0.25vmin;
+        line-height: 2vmin;
+        font-size: inherit;
+        word-wrap: break-word;
+    }
+  }
+
+
+
+  img{
+    width: 100%;
+    height: inherit;
+    object-fit: cover;
+    object-position: center;
+  }
+
+}

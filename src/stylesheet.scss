@@ -1,0 +1,360 @@
+@import "./variables";
+
+html {
+  touch-action: manipulation;
+}
+
+p {
+  @extend %font2;
+}
+
+body {
+  overflow-x: hidden;
+  margin: 0;
+  //background-color: rgb(50,150,150);
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: black;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: middle;
+  text-align: center;
+  z-index: 9999;
+
+  p {
+    color: white;
+  }
+
+  .loading {
+    display: block;
+    margin: auto;
+    text-align: center;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  transition: background-color 1s;
+}
+
+header {
+  order: 1;
+  height: 12vh;
+  z-index: 10;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  flex-direction: column;
+
+  user-select: none;
+
+  @media #{$ipad_h} {
+    height: 10vh;
+  }
+
+  @media #{$ipad_v} {
+    flex-flow: column;
+    align-items: flex-start;
+    height: 15vh;
+  }
+
+  @media #{$iphone} {
+    flex-flow: column;
+    align-items: flex-start;
+    height: 25vh;
+  }
+
+  h1 {
+    @extend %font1;
+    height: 4vmin;
+    padding: 0 1vmin;
+    margin: 0;
+    display: flex;
+    align-items: center;
+
+    font-size: 3vmin;
+
+    background-color: black;
+
+    @media #{$ipad_h} {
+      font-size: 3vmin;
+    }
+    @media #{$ipad_v} {
+      font-size: 4vmin;
+      height: 9vmin;
+      margin-bottom: 0;
+    }
+
+    @media #{$iphone} {
+      font-size: 6vmin;
+      margin-bottom: 0;
+      height: 20vmin;
+    }
+
+    a {
+      color: white;
+      font-size: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: inline-block;
+      height: 75%;
+      width: auto;
+      margin-right: 1vmin;
+      object-fit: contain;
+      object-position: right;
+    }
+  }
+  h2 {
+    font-weight: lighter;
+    @extend %font2;
+    height: 2.5vmin;
+    display: flex;
+    align-items: center;
+    padding: 0 1vmin;
+    background-color: black;
+    font-size: 1.75vmin;
+    color: white;
+    margin-bottom: 0;
+
+    @media #{$ipad_h} {
+      font-size: 2vmin;
+    }
+    @media #{$ipad_v} {
+      font-size: 2.5vmin;
+      height: 6.5vmin;
+      text-indent: 2vmin;
+      margin-bottom: 0;
+    }
+    @media #{$iphone} {
+      font-size: 3.5vmin;
+      padding: 3vmin 2vmin;
+    }
+  }
+}
+.burger {
+  display: flex;
+  align-items: center;
+  border: none;
+  background: none;
+  font-size: 3vmin;
+  outline: none;
+  margin-left: 2vmin;
+  margin-top: 4vmin;
+  z-index: 1;
+
+  @media #{$iphone} {
+    font-size: 4.5vmin;
+    margin: 10vmin 2vmin;
+  }
+
+  img {
+    height: 4vmin;
+    width: auto;
+    margin-right: 1.25vmin;
+
+    @media #{$iphone} {
+      height: 6.5vmin;
+      margin-right: 2vmin;
+    }
+  }
+}
+
+.view {
+  z-index: 0;
+  padding: 5vmin 0vmin 0 5vmin;
+
+  @media #{$ipad_h} {
+    padding: 5vmin 2.5vw 0vmin 2.5vw;
+  }
+
+  @media #{$ipad_v} {
+    padding: 5vmin 5vw 0 2.5vw;
+  }
+
+  @media #{$iphone} {
+    min-height: 110vh;
+    padding: 5vmin 2.5vmin 0 2.5vmin;
+  }
+}
+.root {
+  order: 2;
+  height: auto;
+  min-height: 84vh;
+  @media #{$ipad_h} {
+    height: auto;
+  }
+
+  @media #{$ipad_v} {
+    height: auto;
+  }
+  @media #{$iphone} {
+    height: auto;
+  }
+}
+
+.content {
+  width: 80vw;
+  z-index: 1;
+  @media #{$ipad_h} {
+    width: 75vw;
+  }
+
+  @media #{$ipad_v} {
+    width: 70vw;
+  }
+
+  @media #{$iphone} {
+    width: 100vw;
+  }
+}
+.sidebar {
+  //  border:1px solid red;
+  //  width:20vw;
+  //  padding-top: 10vh;
+  @media #{$iphone} {
+    margin-bottom: 40vmin;
+  }
+}
+
+nav {
+  z-index: 10;
+  user-select: none;
+
+  ul {
+    list-style: none;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+
+    li.close {
+      background-color: red;
+      color: black;
+      height: 8vmin;
+      line-height: 8vmin;
+    }
+
+    li.head {
+      @extend %font1;
+      background-color: gold;
+      color: black;
+      height: 2vmin;
+      margin-top: 2vmin;
+
+      @media #{$ipad_v} {
+        font-size: 1.75vmin;
+        line-height: 3vmin;
+        height: 2.5vmin;
+      }
+
+      @media #{$iphone} {
+        font-size: 4vmin;
+        margin-bottom: 0.25vmin;
+        line-height: 6vmin;
+        height: 5vmin;
+      }
+    }
+
+    li {
+      @extend %font2;
+      text-transform: lowercase;
+      color: white;
+      background-color: black;
+      padding: 0vmin 1vmin;
+      margin-right: 2vmin;
+      margin-top: 1vmin;
+      margin-bottom: -0.5vmin;
+      float: left;
+      clear: both;
+      font-size: 1.75vmin;
+
+      @media #{$ipad_v} {
+        font-size: 1.75vmin;
+        padding: 0 2vmin;
+        height: 2.25vmin;
+        line-height: 2.5vmin;
+      }
+      @media #{$iphone} {
+        font-size: 4vmin;
+        margin-bottom: 2.25vmin;
+        height: 3.25vmin;
+        line-height: 3.5vmin;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+
+    li:not(.head):hover {
+      font-style: oblique;
+      cursor: pointer;
+      background-color: gold;
+      color: black;
+
+      filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.6));
+    }
+  }
+}
+
+footer {
+  @extend %font2;
+  order: 3;
+  user-select: none;
+  display: flex;
+
+  box-sizing: border-box;
+
+  border-top: 0.1vmin dashed black;
+  z-index: 1;
+  align-items: center;
+  justify-content: flex-end;
+  height: 4vh;
+
+  color: black;
+  text-align: right;
+  padding: 0vw 1vw;
+  font-size: 1.5vmin;
+
+  @media #{$ipad_h} {
+    height: 15vh;
+
+    align-items: flex-start;
+    padding-top: 1vmin;
+  }
+
+  @media #{$ipad_v} {
+    font-size: 2vmin;
+    background-color: black;
+    align-items: flex-end;
+    padding-bottom: 2vmin;
+    color: silver;
+    margin-top: 2vmin;
+  }
+
+  @media #{$iphone} {
+    font-size: 3vmin;
+    padding: 0vw 4vw;
+    align-items: center;
+    height: 4.5vh;
+    background-color: black;
+    margin-top: 2vmin;
+    color: white !important;
+  }
+}
+@media #{$iphone} {
+  footer * {
+    color: white !important;
+  }
+}

@@ -1,0 +1,354 @@
+@import "../variables";
+
+@keyframes moving {
+  0% {
+    clip-path: polygon(
+      50% 0%,
+      94% 5%,
+      100% 35%,
+      98% 80%,
+      76% 96%,
+      50% 100%,
+      9% 95%,
+      0% 70%,
+      0% 35%,
+      11% 7%
+    );
+  }
+  15% {
+    clip-path: polygon(
+      62% 1%,
+      99% 14%,
+      100% 69%,
+      94% 96%,
+      65% 100%,
+      31% 100%,
+      0 88%,
+      0 47%,
+      3% 12%,
+      13% 3%
+    );
+  }
+  30% {
+    clip-path: polygon(
+      75% 10%,
+      96% 46%,
+      100% 97%,
+      74% 100%,
+      49% 97%,
+      22% 89%,
+      1% 66%,
+      3% 33%,
+      6% 7%,
+      38% 5%
+    );
+  }
+  45% {
+    clip-path: polygon(
+      96% 6%,
+      95% 55%,
+      80% 99%,
+      37% 100%,
+      14% 96%,
+      0 68%,
+      3% 42%,
+      7% 26%,
+      23% 15%,
+      50% 4%
+    );
+  }
+  60% {
+    clip-path: polygon(
+      100% 24%,
+      98% 78%,
+      65% 100%,
+      30% 98%,
+      6% 89%,
+      3% 57%,
+      2% 24%,
+      13% 7%,
+      40% 0,
+      83% 0
+    );
+  }
+  75% {
+    clip-path: polygon(
+      100% 63%,
+      92% 92%,
+      48% 93%,
+      23% 88%,
+      0 74%,
+      0 43%,
+      5% 10%,
+      30% 0,
+      61% 0,
+      100% 6%
+    );
+  }
+  90% {
+    clip-path: polygon(
+      93% 91%,
+      72% 100%,
+      28% 97%,
+      4% 95%,
+      0 54%,
+      0 25%,
+      6% 8%,
+      30% 0,
+      100% 0,
+      100% 16%
+    );
+  }
+  100% {
+    clip-path: polygon(
+      85% 93%,
+      37% 95%,
+      9% 95%,
+      0 78%,
+      0 29%,
+      7% 5%,
+      33% 5%,
+      85% 5%,
+      98% 24%,
+      100% 66%
+    );
+  }
+}
+
+.wrapper {
+  overflow: hidden;
+  float: left;
+
+  .banner {
+    opacity: 0.7;
+    width: 50vmin;
+    height: 50vmin;
+    object-fit: cover;
+    border-radius: 0.5vmin;
+    margin-right: 4vmin;
+    margin-bottom: 2vmin;
+    background-color: black;
+    animation: moving 70s ease-in-out infinite alternate;
+    clip-path: polygon(75% 0, 100% 66%, 82% 100%, 0 83%, 0 15%);
+    border: 0.25vmin dashed black;
+
+    @media #{$ipad_v} {
+      width: 30vw;
+      height: 30vw;
+      margin-right: 6vmin;
+      margin-bottom: 4vmin;
+    }
+
+    @media #{$iphone} {
+      width: 96vw;
+      height: 96vw;
+      margin: 0;
+      animation: none;
+      margin-bottom: 10vmin;
+    }
+  }
+}
+
+.load {
+  width: 50vmin;
+  height: 50vmin;
+  border: 0.25vmin dotted black;
+  border-radius: 0.5vmin;
+  float: left;
+  margin-right: 2vmin;
+  margin-bottom: 2vmin;
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
+  background-color: black;
+  clip-path: polygon(75% 0, 100% 66%, 82% 100%, 0 83%, 0 15%);
+}
+.loader {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+.vimeowrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.225;
+}
+.vimeowrapper iframe {
+  width: 100vw;
+  height: 56.25vw; /* Given a 16:9 aspect ratio, 9/16*100 = 56.25 */
+  min-height: 100vh;
+  min-width: 177.77vh; /* Given a 16:9 aspect ratio, 16/9*100 = 177.77 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.projectbox {
+  display: inline-block;
+  width: 40vw;
+
+  @media #{$ipad_v} {
+    width: 27vw;
+  }
+
+  @media #{$iphone} {
+    width: 96vw;
+  }
+
+  h3 {
+    font-size: 1.75vmin;
+    @extend %font1;
+    background-color: black;
+    color: gold;
+    padding: 1vmin;
+    display: inline;
+    line-height: 3.5vmin;
+    padding-left: 0.75vmin;
+
+    @media #{$ipad_v} {
+      //  height: 4vmin;
+      font-size: 2vmin;
+    }
+
+    @media #{$iphone} {
+      font-size: 4.5vmin;
+      line-height: 6vmin;
+      //  height: auto;
+    }
+  }
+
+  .fb {
+    //height: 3vmin;
+    align-items: center;
+    margin: 1vmin 0;
+    display: inline-block;
+    vertical-align: middle;
+    align-items: center;
+
+    img {
+      width: 3vmin;
+      height: auto;
+      @media #{$iphone} {
+        width: 9vmin;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .fb:hover,
+  .share:hover {
+    img {
+      filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.6));
+    }
+  }
+
+  .share {
+    border: none;
+    //  height: 3vmin;
+    background: none;
+    font-size: 1.25vmin;
+    color: black;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    align-items: center;
+
+    img {
+      width: 3vmin;
+      height: auto;
+      display: inline-block;
+      @media #{$iphone} {
+        width: 9vmin;
+      }
+    }
+  }
+
+  p.desc {
+    font-size: 1.75vmin;
+    @media #{$ipad_h} {
+      font-size: 2vmin;
+    }
+    @media #{$iphone} {
+      font-size: 4.5vmin;
+    }
+  }
+
+  p.location {
+    font-size: 1.75vmin;
+    @media #{$ipad_v} {
+      font-size: 2vmin;
+    }
+    @media #{$iphone} {
+      font-size: 4.5vmin;
+      line-height: 9vmin;
+    }
+  }
+
+  .artists {
+    font-size: 1.75vmin;
+    @media #{$iphone} {
+      font-size: 4vmin;
+    }
+
+    li {
+      a {
+        text-decoration: none;
+        color: black;
+      }
+      a:hover {
+        color: gold;
+      }
+    }
+  }
+
+  .tag {
+    @extend %font2;
+    margin-top: -0.75vmin;
+    span {
+      background-color: black;
+      color: white;
+      margin: 0 0.5vmin;
+      padding: 0.25vmin 0.5vmin;
+      font-size: 1.75vmin;
+
+      @media #{$ipad_v} {
+        font-size: 1.75vmin;
+      }
+
+      @media #{$iphone} {
+        font-size: 3.5vmin;
+      }
+    }
+  }
+
+  .link {
+    a:not(.fb) {
+      @extend %font2;
+      text-decoration: none;
+      color: black;
+      font-size: 1.5vmin;
+      margin-right: 1vmin;
+
+      @media #{$ipad_v} {
+        font-size: 2vmin;
+      }
+
+      @media #{$iphone} {
+        font-size: 3.5vmin;
+      }
+    }
+    a:not(.fb):hover {
+      color: red;
+
+      filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.6));
+    }
+  }
+}

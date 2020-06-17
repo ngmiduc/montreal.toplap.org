@@ -1,0 +1,13 @@
+$ipad_h: (only screen and (max-device-width : 1367px));
+$ipad_v: (only screen and (max-device-width : 1025px));
+$iphone: (only screen and (max-device-width : 769px));
+
+@import url("https://fonts.googleapis.com/css?family=Inconsolata|Major+Mono+Display");
+
+
+%font1 {
+  font-family: "Major Mono Display", monospace;
+}
+%font2 {
+  font-family: "Inconsolata", monospace;
+}

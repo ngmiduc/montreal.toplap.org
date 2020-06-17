@@ -1,0 +1,90 @@
+@import '../variables';
+
+.home{
+
+  column-count: 3;
+
+  column-gap: 4vmin;
+  column-rule-style: dashed;
+  column-rule-width: 1px;
+  column-fill: auto;
+  height: 70vh;
+
+
+  @media #{$ipad_v}{
+    margin-bottom: 10vh;
+    height: auto;
+    min-height: 70vh;
+  }
+
+  @media #{$ipad_v}{
+    column-count: 2;
+    height: auto;
+    min-height: 100vh;
+  }
+  @media #{$iphone}{
+    column-count: 1;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  p{
+    margin: 0;
+    margin-bottom: 2vmin;
+    font-size: 1.75vmin;
+    color:white;
+
+    @media #{$ipad_v}{
+      font-size: 2vmin;
+    }
+    @media #{$iphone}{
+
+      font-size: 5vmin;
+    }
+
+    a.faceb{
+      img{
+        width: 3vmin;
+        height:auto;
+        vertical-align: middle;
+        @media #{$ipad_h}{
+          width: 3vmin;
+        }
+        @media #{$ipad_v}{
+          width: 4vmin;
+        }
+        @media #{$iphone}{
+          width: 10vmin;
+        }
+      }
+
+    }
+
+    a{
+      text-decoration: none;
+      color:gold;
+    }
+    a:hover{
+      color:red;
+    }
+
+    .tag{
+      background-color: black;
+      color:gold;
+      padding: 0.5vmin;
+      line-height: 3.3vmin;
+      white-space: nowrap;
+
+      @media #{$ipad_v}{
+        line-height: 4vmin;
+      }
+
+      @media #{$iphone}{
+        padding: 2vmin;
+        line-height: 12vmin;
+      }
+    }
+
+  }
+
+}
