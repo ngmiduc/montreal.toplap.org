@@ -39,8 +39,8 @@ const Call = Loadable({
   loader: () => import("./Call" /* webpackChunkName: "call" */),
   loading: Load
 })
-const P5JS = Loadable({
-  loader: () => import("./P5JS" /* webpackChunkName: "art" */),
+const P5GUILLAUME = Loadable({
+  loader: () => import("./P5GUILLAUME" /* webpackChunkName: "P5GUILLAUME" */),
   loading: Load
 })
 const PS5MINH = Loadable({
@@ -357,7 +357,12 @@ class App extends React.Component {
                     <PoseGroup>
                       <RouteContainer key={location.pathname}>
                         <Switch location={location}>
-                          <Route exact path="/" key="home" component={P5JS} />
+                          <Route
+                            exact
+                            path="/"
+                            key="home"
+                            component={P5GUILLAUME}
+                          />
                           <Route
                             path="/about"
                             key="about"
@@ -394,7 +399,7 @@ class App extends React.Component {
                           />
                           <Route
                             path="/onlineart"
-                            component={P5JS}
+                            component={P5GUILLAUME}
                             key="onlineart"
                           />
                           <Route
@@ -428,7 +433,7 @@ class App extends React.Component {
             </div>
           </Sidebar>
           <footer style={{ color: this.state.footer }}>
-            toplap montreal &copy; 2019 Montreal / website by
+            toplap montreal &copy; 2019 Montreal /
             <a
               href="https://www.pinkbeton.com"
               style={{

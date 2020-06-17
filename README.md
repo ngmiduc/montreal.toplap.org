@@ -2,14 +2,18 @@
 
 live coding website for montreal
 
-## development
+## development on local server
 
-to run project in dev mode : npm run start
+- first install dependencies: `npm i`
 
-## build
+- to run project in dev mode : `npm run start`
+- project can be served now on local server : http://localhost:8000
 
-to build project into production : npm run build
+## build project
 
-## deployment
+to build project into production : `npm run build`
 
-to deploy website to production : firebase deploy
+## deployment project
+
+to deploy website to production : `firebase deploy`
+(firebase-tools needs to be installed globally on node)
