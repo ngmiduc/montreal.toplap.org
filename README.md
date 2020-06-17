@@ -2,12 +2,16 @@
 
 live coding website for montreal
 
+## installation requirements
+
+- node installed on machine (v8)
+- use nvm to install node v8
+- install dependencies: `npm i`
+
 ## development on local server
 
-- first install dependencies: `npm i`
-
 - to run project in dev mode : `npm run start`
-- project can be served now on local server : http://localhost:8000
+- project can be served now on local server : http://localhost:8080
 
 ## build project
 
