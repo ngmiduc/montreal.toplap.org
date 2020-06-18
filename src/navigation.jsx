@@ -19,11 +19,11 @@ class Navigation extends React.Component {
   render() {
     return (
       <nav>
-        <ul onClick={() => this.onSetSidebarOpen(false)}>
+        <ul onClick={() => this.props.onSetSidebarOpen(false)}>
           {this.props.sidebarDocked ? null : (
             <li
               className={styles.close}
-              onClick={() => this.onSetSidebarOpen(false)}
+              onClick={() => this.props.onSetSidebarOpen(false)}
             >
               x close menu
             </li>

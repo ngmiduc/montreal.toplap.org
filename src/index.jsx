@@ -9,71 +9,16 @@ import { BrowserRouter, Route, Switch, Link } from "react-router-dom"
 import posed, { PoseGroup } from "react-pose"
 
 // external componentx
-import ReactLoading from "react-loading"
 import Sidebar from "react-sidebar"
-import Loadable from "react-loadable"
+import ReactLoading from "react-loading"
 
 // components
-import Navigation from "./Navigation"
+import Navigation from "./navigation"
+import View from "./view"
 
 // styles
 import styles from "./stylesheet.scss"
 import randomColor from "randomcolor"
-
-// loading component
-const Load = () => (
-  <ReactLoading
-    type="bars"
-    height={"5%"}
-    width={"5%"}
-    color="#fff"
-    className={styles.loading}
-  />
-)
-
-// routes imports
-const Home = Loadable({
-  loader: () => import("./Home" /* webpackChunkName: "home" */),
-  loading: Load
-})
-const Artists = Loadable({
-  loader: () => import("./Artists" /* webpackChunkName: "artist" */),
-  loading: Load
-})
-// const Entree = Loadable({
-//   loader: () => import("./Entree" /* webpackChunkName: "entry" */),
-//   loading: Load
-// });
-const Project = Loadable({
-  loader: () => import("./Project" /* webpackChunkName: "proj" */),
-  loading: Load
-})
-const Call = Loadable({
-  loader: () => import("./Call" /* webpackChunkName: "call" */),
-  loading: Load
-})
-const P5GUILLAUME = Loadable({
-  loader: () => import("./P5GUILLAUME" /* webpackChunkName: "P5GUILLAUME" */),
-  loading: Load
-})
-const PS5MINH = Loadable({
-  loader: () => import("./PS5MINH" /* webpackChunkName: "PS5MINH" */),
-  loading: Load
-})
-
-const mql = window.matchMedia(`(min-width: 800px)`)
-
-const RouteContainer = posed.div({
-  enter: {
-    opacity: 1,
-    delay: 300,
-    beforeChildren: true
-  },
-  exit: {
-    opacity: 0,
-    transition: { duration: 200 }
-  }
-})
 
 const Loader = posed.div({
   hidden: {
@@ -93,7 +38,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      sidebarDocked: mql.matches,
+      sidebarDocked: window.matchMedia(`(min-width: 800px)`).matches,
       sidebarOpen: false,
 
       documentready: false,
@@ -240,6 +185,7 @@ class App extends React.Component {
             />
             <p>refresh if necessary</p>
           </Loader>
+
           <header>
             <h1>
               <img src="img/logo/icon.jpg" alt="" />
@@ -249,11 +195,13 @@ class App extends React.Component {
               open exchange for new media arts and audio visual performances
             </h2>
           </header>
+
           <Sidebar
             sidebar={
               <Navigation
                 sidebarDocked={this.state.sidebarDocked}
                 events={this.state.events}
+                onSetSidebarOpen={this.onSetSidebarOpen}
               />
             }
             open={this.state.sidebarOpen}
@@ -292,88 +240,16 @@ class App extends React.Component {
                 menu
               </button>
             )}
-            <div className={styles.view}>
-              <Route
-                render={({ location }) => {
-                  return (
-                    <PoseGroup>
-                      <RouteContainer key={location.pathname}>
-                        <Switch location={location}>
-                          <Route
-                            exact
-                            path="/"
-                            key="home"
-                            component={P5GUILLAUME}
-                          />
-                          <Route
-                            path="/about"
-                            key="about"
-                            render={props => {
-                              return (
-                                <Home change={this.changecolor} {...props} />
-                              )
-                            }}
-                          />
-                          <Route
-                            path="/artists"
-                            key="artists"
-                            render={props => {
-                              if (this.state.artistsready)
-                                return (
-                                  <Artists
-                                    artistlist={this.state.artists}
-                                    change={this.changecolor}
-                                    app={app}
-                                    {...props}
-                                  />
-                                )
-                              else return <div />
-                            }}
-                          />
-                          <Route
-                            path="/opencall"
-                            key="opencall"
-                            render={props => {
-                              return (
-                                <Call change={this.changecolor} {...props} />
-                              )
-                            }}
-                          />
-                          <Route
-                            path="/onlineart"
-                            component={P5GUILLAUME}
-                            key="onlineart"
-                          />
-                          <Route
-                            path="/onlineart_2"
-                            component={PS5MINH}
-                            key="onlineart_2"
-                          />
-                          <Route
-                            path="/:id"
-                            key="project"
-                            render={props => {
-                              let work = this.findWork(props.match.params.id)
-                              if (this.state.documentready)
-                                return (
-                                  <Project
-                                    work={work}
-                                    change={this.changecolor}
-                                    app={app}
-                                    {...props}
-                                  />
-                                )
-                              else return <div />
-                            }}
-                          />
-                        </Switch>
-                      </RouteContainer>
-                    </PoseGroup>
-                  )
-                }}
-              />
-            </div>
+
+            <View
+              findWork={this.findWork}
+              changecolor={this.changecolor}
+              artistsready={this.state.artistsready}
+              artists={this.state.artists}
+              documentready={this.state.documentready}
+            />
           </Sidebar>
+
           <footer style={{ color: this.state.footer }}>
             toplap montreal &copy; 2019 Montreal /
             <a
