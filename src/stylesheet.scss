@@ -152,6 +152,10 @@ header {
   margin-left: 2vmin;
   margin-top: 4vmin;
   z-index: 1;
+  background-color: white;
+  padding: 5px 10px;
+
+  filter: invert(100%);
 
   @media #{$iphone} {
     font-size: 4.5vmin;
