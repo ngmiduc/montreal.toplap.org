@@ -28,34 +28,33 @@ const Load = () => (
 
 // routes imports
 const Home = Loadable({
-  loader: () => import("./Home" /* webpackChunkName: "home" */),
+  loader: () => import("./pages/Home" /* webpackChunkName: "home" */),
   loading: Load
 })
 const Artists = Loadable({
-  loader: () => import("./Artists" /* webpackChunkName: "artist" */),
+  loader: () => import("./pages/Artists" /* webpackChunkName: "artist" */),
   loading: Load
 })
-// const Entree = Loadable({
-//   loader: () => import("./Entree" /* webpackChunkName: "entry" */),
-//   loading: Load
-// });
 const Project = Loadable({
-  loader: () => import("./Project" /* webpackChunkName: "proj" */),
+  loader: () => import("./pages/Project" /* webpackChunkName: "proj" */),
   loading: Load
 })
 const Call = Loadable({
-  loader: () => import("./Call" /* webpackChunkName: "call" */),
+  loader: () => import("./pages/Call" /* webpackChunkName: "call" */),
   loading: Load
 })
 const P5GUILLAUME = Loadable({
-  loader: () => import("./P5GUILLAUME" /* webpackChunkName: "P5GUILLAUME" */),
+  loader: () =>
+    import("./pages-p5js/P5GUILLAUME" /* webpackChunkName: "P5GUILLAUME" */),
   loading: Load
 })
 const PS5MINH = Loadable({
-  loader: () => import("./PS5MINH" /* webpackChunkName: "PS5MINH" */),
+  loader: () =>
+    import("./pages-p5js/PS5MINH" /* webpackChunkName: "PS5MINH" */),
   loading: Load
 })
 
+// animated container
 const RouteContainer = posed.div({
   enter: {
     opacity: 1,
