@@ -33,7 +33,14 @@ class Project extends React.Component {
           <div
             className={styles.vimeowrapper}
             style={{
-              backgroundImage: 'url("' + this.props.work.banner[0].url + '")',
+              backgroundImage:
+                'url("' +
+                (() => {
+                  return this.props.work.banner
+                    ? this.props.work.banner[0].url
+                    : ""
+                })() +
+                '")',
               opacity: 0.25,
               filter: "invert(100%) grayscale(100%)",
               zIndex: -1,
