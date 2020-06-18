@@ -1,14 +1,26 @@
 import React from "react"
 import ReactDOM from "react-dom"
 
+// utils
 import app from "./firebase.js"
 
-import Sidebar from "react-sidebar"
-import { BrowserRouter, Route, Link, Switch } from "react-router-dom"
+// packages
+import { BrowserRouter, Route, Switch, Link } from "react-router-dom"
 import posed, { PoseGroup } from "react-pose"
 
+// external componentx
+import ReactLoading from "react-loading"
+import Sidebar from "react-sidebar"
 import Loadable from "react-loadable"
 
+// components
+import Navigation from "./Navigation"
+
+// styles
+import styles from "./stylesheet.scss"
+import randomColor from "randomcolor"
+
+// loading component
 const Load = () => (
   <ReactLoading
     type="bars"
@@ -19,6 +31,7 @@ const Load = () => (
   />
 )
 
+// routes imports
 const Home = Loadable({
   loader: () => import("./Home" /* webpackChunkName: "home" */),
   loading: Load
@@ -48,12 +61,6 @@ const PS5MINH = Loadable({
   loading: Load
 })
 
-import ReactLoading from "react-loading"
-
-import styles from "./stylesheet.scss"
-
-import randomColor from "randomcolor"
-
 const mql = window.matchMedia(`(min-width: 800px)`)
 
 const RouteContainer = posed.div({
@@ -67,8 +74,6 @@ const RouteContainer = posed.div({
     transition: { duration: 200 }
   }
 })
-
-const today = new Date()
 
 const Loader = posed.div({
   hidden: {
@@ -246,73 +251,10 @@ class App extends React.Component {
           </header>
           <Sidebar
             sidebar={
-              <nav>
-                <ul onClick={() => this.onSetSidebarOpen(false)}>
-                  {this.state.sidebarDocked ? null : (
-                    <li
-                      className={styles.close}
-                      onClick={() => this.onSetSidebarOpen(false)}
-                    >
-                      x close menu
-                    </li>
-                  )}
-                  <li>
-                    <Link to="/about">about</Link>
-                  </li>
-                  <li>
-                    <Link to="/artists">artists</Link>
-                  </li>
-                  <li className={styles.head}>projects</li>
-                  {this.state.events.map((item, index) => {
-                    if (new Date(item.date) >= today)
-                      return (
-                        <li key={index}>
-                          <Link to={"/" + item.urlTitle}>{item.title}</Link>
-                        </li>
-                      )
-                  })}
-                  {this.state.events.map((item, index) => {
-                    if (new Date(item.date) < today)
-                      return (
-                        <li key={index}>
-                          <Link to={"/" + item.urlTitle}>{item.title}</Link>
-                        </li>
-                      )
-                  })}
-                  <li className={styles.head}>open call</li>
-                  <li>
-                    <Link to="/opencall">apply</Link>
-                  </li>
-                  <li className={styles.head}>online art</li>
-                  <li>
-                    <Link to="/onlineart">Guillaume Pelletier-Auger</Link>
-                  </li>
-                  <li>
-                    <Link to="/onlineart_2">Minh Duc Nguyen</Link>
-                  </li>
-                  <li className={styles.head}>community</li>
-                  <li>
-                    <a
-                      rel="noopener"
-                      target="_blank"
-                      title="toplap website"
-                      href="https://toplap.org/"
-                    >
-                      TOPLAP
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      rel="noopener"
-                      target="_blank"
-                      title="algorave website"
-                      href="https://algorave.com/"
-                    >
-                      Algorave
-                    </a>
-                  </li>
-                </ul>
-              </nav>
+              <Navigation
+                sidebarDocked={this.state.sidebarDocked}
+                events={this.state.events}
+              />
             }
             open={this.state.sidebarOpen}
             docked={this.state.sidebarDocked}
