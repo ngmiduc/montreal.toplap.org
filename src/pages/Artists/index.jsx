@@ -1,7 +1,10 @@
 import React from "react"
 import styles from "./styles.scss"
 
+// meta tag changer
 import { ReactTitle } from "react-meta-tags"
+
+// stack grid template layout
 import StackGrid from "react-stack-grid"
 import sizeMe from "react-sizeme"
 
@@ -13,37 +16,6 @@ class Artists extends React.Component {
     this.state = {
       img: []
     }
-  }
-
-  componentDidMount() {
-    // var temp = []
-    // Promise.all(
-    //   this.props.artistlist.map((item, index) => {
-    //     // console.log(this.props.app)
-    //     return new Promise(resolve => {
-    //       console.log(this.props.app)
-    //       this.props.app.storage
-    //         .getURL(item.pic[0], {
-    //           size: { width: 375, height: 9999, quality: 1 }
-    //         })
-    //         .then(url => {
-    //           console.log("loaded image" + index)
-    //           temp[index] = url
-    //           resolve(url)
-    //         })
-    //     })
-    //   })
-    // )
-    //   .then(() => {
-    //     console.log("all images loaded")
-    //     this.setState({
-    //       img: temp
-    //     })
-    //   })
-    //   .then(() => {
-    //     console.log("update grid")
-    //     this.grid.updateLayout()
-    //   })
   }
 
   render() {

@@ -1,5 +1,7 @@
 import React from "react"
 import styles from "./styles.scss"
+
+// meta tag changer
 import { ReactTitle } from "react-meta-tags"
 
 class Home extends React.Component {

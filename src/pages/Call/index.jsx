@@ -1,12 +1,13 @@
-import React from "react";
-import styles from "./styles.scss";
+import React from "react"
+import styles from "./styles.scss"
 
-import { ReactTitle } from "react-meta-tags";
+// meta tag changer
+import { ReactTitle } from "react-meta-tags"
 
 class Call extends React.Component {
   constructor(props) {
-    super(props);
-    this.props.change("#000");
+    super(props)
+    this.props.change("#000")
   }
 
   render() {
@@ -18,7 +19,7 @@ class Call extends React.Component {
         <h3>audio visual performances</h3>
         <p>send us your performance idea</p>
       </div>
-    );
+    )
   }
 }
-export default Call;
+export default Call

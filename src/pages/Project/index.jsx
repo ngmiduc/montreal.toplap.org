@@ -1,8 +1,10 @@
 import React from "react"
 import styles from "./styles.scss"
 
+// packages
 import ReactLoading from "react-loading"
 
+// meta tags package
 import { ReactTitle } from "react-meta-tags"
 
 class Project extends React.Component {
@@ -16,21 +18,6 @@ class Project extends React.Component {
 
   componentDidMount() {
     this.props.change(this.props.work.color)
-
-    // console.log(this.props.work.banner)
-
-    // if ("banner" in this.props.work)
-    //   this.props.app.storage
-    //     .getURL(this.props.work.banner[0].id, {
-    //       size: {
-    //         width: 667,
-    //         height: 9999,
-    //         quality: 100
-    //       }
-    //     })
-    //     .then(url => {
-    //       this.setState({ img: url })
-    //     })
   }
 
   render() {
