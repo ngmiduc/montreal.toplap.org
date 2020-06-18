@@ -1,22 +1,23 @@
-const webpack = require('webpack');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const webpack = require("webpack")
 
-const autoprefixer = require('autoprefixer')
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const path = require("path")
 
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
-const devMode = process.env.NODE_ENV !== 'production'
+const autoprefixer = require("autoprefixer")
+const HtmlWebPackPlugin = require("html-webpack-plugin")
+
+const devMode = process.env.NODE_ENV !== "production"
 
 module.exports = {
-
-  entry: './src/index.jsx',
+  entry: "./src/index.jsx",
 
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: ["babel-loader"]
       },
       {
         test: /\.html$/,
@@ -31,24 +32,33 @@ module.exports = {
         test: /\.scss|css$/,
         exclude: /node_modules/,
         use: [
-          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          devMode ? "style-loader" : MiniCssExtractPlugin.loader,
           {
             loader: "css-loader",
-             options: {
-               sourceMap: true,
-               importLoaders: 1,
-               url: false,
-               modules: true,
-               localIdentName: '[name]__[local]___[hash:base64:5]'
-             }
+            options: {
+              sourceMap: true,
+              importLoaders: 1,
+              url: false,
+              modules: true,
+              localIdentName: "[name]__[local]___[hash:base64:5]"
+            }
           },
           {
             loader: "postcss-loader",
-            options: {sourceMap: true}
+            options: { sourceMap: true }
           },
           {
             loader: "sass-loader",
-            options: {sourceMap: true}
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: "sass-resources-loader",
+            options: {
+              // Or array of paths
+              resources: ["./src/_variables.scss"]
+            }
           }
         ]
       }
@@ -56,7 +66,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['*', '.js', '.jsx']
+    extensions: ["*", ".js", ".jsx"]
   },
 
   plugins: [
@@ -66,18 +76,15 @@ module.exports = {
     }),
     new webpack.LoaderOptionsPlugin({
       options: {
-          postcss: [
-            autoprefixer()
-          ]
+        postcss: [autoprefixer()]
       }
     })
   ],
 
   output: {
-    chunkFilename: '[name].js',
-    path: __dirname + '/docs',
-    publicPath: '',
-    filename: 'bundle.js'
+    chunkFilename: "[name].js",
+    path: __dirname + "/docs",
+    publicPath: "",
+    filename: "bundle.js"
   }
-
-};
+}

@@ -1,8 +1,6 @@
-@import '../variables';
-
-.call{
-  color:white;
-  h3{
+.call {
+  color: white;
+  h3 {
     text-transform: uppercase;
     @extend %font1;
   }
