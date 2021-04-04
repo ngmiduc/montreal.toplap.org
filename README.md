@@ -1,35 +1,17 @@
 # montreal.toplap.org
 
-live coding website for montreal
+Live-coding website for TOPLAP Montreal.
 
-## installation requirements
+## Installation requirements
 
-- node installed on machine (v8)
+- `NodeJs` installed
+- Installing dependencies with `npm install` in the project folder.
 
-- use nvm to install node v8
-- install nvm
-- nvm install v8
-- nvm use v8
-- nvm current "to check that we are running at node v8"
+## Development on local server
 
-- install dependencies: `npm i`
+- Run project in development `npm run serve`
+- Project can be served now on local server : http://localhost:8080
 
-## development on local server
+## Build and deploy project
 
-- to run project in dev mode : `npm run start`
-- project can be served now on local server : http://localhost:8080
-
-## build project
-
-to build project into production : `npm run build`
-
-## deployment project
-
-to deploy website to production : 
-
-(firebase-tools needs to be installed globally on node)
-
-https://www.npmjs.com/package/firebase-tools
-
-- then login into firebase project with `firebase login`
-- then deploy `firebase deploy --only hosting`
+All pushes to master will be deployed to production.
