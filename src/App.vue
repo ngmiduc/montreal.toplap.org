@@ -65,6 +65,19 @@
           </a>
         </a-typography-text>
       </a-typography-paragraph>
+
+      <a-typography-paragraph>
+        Open source project
+        <a-typography-text code>
+          <a
+            rel="noopener"
+            target="_blank"
+            href="https://github.com/ngmiduc/montreal.toplap.org"
+          >
+            github
+          </a>
+        </a-typography-text>
+      </a-typography-paragraph>
     </header>
 
     <router-view />
